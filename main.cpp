@@ -16,6 +16,7 @@ int multiplicar(int num1, int num2) {
 float dividir(int num1, int num2) {
     if (num2 == 0) {
         cout << "No se puede dividir por cero" << endl;
+        throw "Division por cero";
         return 0;
     }
     return num1 / num2;
@@ -26,7 +27,7 @@ int main() {
     int num1, num2, option;
 
     do {
-        cout << "Menu\n1- Sumar\n2- Restar\n3- Multiplicar\n4- Dividir\n5- Salir\n>> ";
+        cout << "---- Menu ----\n1- Sumar\n2- Restar\n3- Multiplicar\n4- Dividir\n5- Salir\n>> ";
         cin >> option;
 
         if (option >= 1 && option <= 4) {
@@ -48,7 +49,11 @@ int main() {
                 cout << "Resultado: " << multiplicar(num1, num2) << endl;
                 break;
             case 4:
-                cout << "Resultado: " << dividir(num1, num2) << endl;
+                try {
+                    cout << "Resultado: " << dividir(num1, num2) << endl;
+                } catch (const char* msg) {
+                    cout << "Error: " << msg << endl;
+                }
                 break;
             case 5:
                 cout << "Cerrar programa" << endl;
