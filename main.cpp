@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int sumar(int num1, int num2) {
@@ -22,12 +23,24 @@ float dividir(int num1, int num2) {
     return num1 / num2;
 }
 
+class Temperature {
+    public:
+        float celsius_to_fahrenheit(int degrees) {
+            return (degrees * (9.0/5.0)) + 32;
+        }
+
+        float fahrenheit_to_celsius(int degrees) {
+            return (degrees - 32.0) * (5.0/9.0);
+        }
+};
+
 
 int main() {
     int num1, num2, option;
+    Temperature temperature;
 
     do {
-        cout << "---- Menu ----\n1- Sumar\n2- Restar\n3- Multiplicar\n4- Dividir\n5- Salir\n>> ";
+        cout << "---- Menu ----\n1- Sumar\n2- Restar\n3- Multiplicar\n4- Dividir\n5- Celsius a Fahrenheit\n6- Fahrenheit a Celsius\n7- Salir\n>> ";
         cin >> option;
 
         if (option >= 1 && option <= 4) {
@@ -56,11 +69,21 @@ int main() {
                 }
                 break;
             case 5:
+                cout << "Ingrese grados celsius\n>> ";
+                cin >> num1;
+                cout << "Grados fahrenheit: " << round(temperature.celsius_to_fahrenheit(num1)) << endl;
+                break;
+            case 6:
+                cout << "Ingrese grados fahrenheit\n>> ";
+                cin >> num1;
+                cout << "Grados celsius: " << round(temperature.fahrenheit_to_celsius(num1)) << endl;
+                break;
+            case 7:
                 cout << "Cerrar programa" << endl;
                 break; 
             default:
                 cout << "Opcion invalida" << endl;
                 break;
         }
-    } while (option != 5);
+    } while (option != 7);
 }
