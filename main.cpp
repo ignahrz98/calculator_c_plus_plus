@@ -2,26 +2,29 @@
 #include <cmath>
 using namespace std;
 
-int sumar(int num1, int num2) {
-    return num1 + num2;
-}
-
-int restar(int num1, int num2) {
-    return num1 - num2;
-}
-
-int multiplicar(int num1, int num2) {
-    return num1 * num2;
-}
-
-float dividir(int num1, int num2) {
-    if (num2 == 0) {
-        cout << "No se puede dividir por cero" << endl;
-        throw "Division por cero";
-        return 0;
-    }
-    return num1 / num2;
-}
+class BasicCalc {
+    public:
+        int sumar(int num1, int num2) {
+            return num1 + num2;
+        }
+        
+        int restar(int num1, int num2) {
+            return num1 - num2;
+        }
+        
+        int multiplicar(int num1, int num2) {
+            return num1 * num2;
+        }
+        
+        float dividir(int num1, int num2) {
+            if (num2 == 0) {
+                cout << "No se puede dividir por cero" << endl;
+                throw "Division por cero";
+                return 0;
+            }
+            return num1 / num2;
+        }
+};
 
 class Temperature {
     public:
@@ -38,6 +41,7 @@ class Temperature {
 int main() {
     int num1, num2, option;
     Temperature temperature;
+    BasicCalc basicCalc;
 
     do {
         cout << "---- Menu ----\n1- Sumar\n2- Restar\n3- Multiplicar\n4- Dividir\n5- Celsius a Fahrenheit\n6- Fahrenheit a Celsius\n7- Salir\n>> ";
@@ -53,17 +57,17 @@ int main() {
 
         switch (option) {
             case 1:
-                cout << "Resultado: " << sumar(num1, num2) << endl;
+                cout << "Resultado: " << basicCalc.sumar(num1, num2) << endl;
                 break;
             case 2:
-                cout << "Resultado: " << restar(num1, num2) << endl;
+                cout << "Resultado: " << basicCalc.restar(num1, num2) << endl;
                 break;
             case 3:
-                cout << "Resultado: " << multiplicar(num1, num2) << endl;
+                cout << "Resultado: " << basicCalc.multiplicar(num1, num2) << endl;
                 break;
             case 4:
                 try {
-                    cout << "Resultado: " << dividir(num1, num2) << endl;
+                    cout << "Resultado: " << basicCalc.dividir(num1, num2) << endl;
                 } catch (const char* msg) {
                     cout << "Error: " << msg << endl;
                 }
