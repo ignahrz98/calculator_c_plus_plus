@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 class BasicCalc {
@@ -17,12 +18,15 @@ class BasicCalc {
         }
         
         float dividir(int num1, int num2) {
-            if (num2 == 0) {
+            float num1f= static_cast<float>(num1);
+            float num2f = static_cast<float>(num2);
+
+            if (num2f == 0) {
                 cout << "No se puede dividir por cero" << endl;
                 throw "Division por cero";
                 return 0;
             }
-            return num1 / num2;
+            return num1f / num2f;
         }
 };
 
@@ -67,7 +71,7 @@ int main() {
                 break;
             case 4:
                 try {
-                    cout << "Resultado: " << basicCalc.dividir(num1, num2) << endl;
+                    cout << "Resultado: " << fixed << setprecision(2) << basicCalc.dividir(num1, num2) << endl;
                 } catch (const char* msg) {
                     cout << "Error: " << msg << endl;
                 }
