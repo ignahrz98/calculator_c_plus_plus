@@ -48,7 +48,12 @@ int main() {
     BasicCalc basicCalc;
 
     do {
-        cout << "---- Menu ----\n1- Sumar\n2- Restar\n3- Multiplicar\n4- Dividir\n5- Celsius a Fahrenheit\n6- Fahrenheit a Celsius\n7- Salir\n>> ";
+        cout << "---- Menu ----" << endl;
+        cout << "- Operaciones basicas -" << endl;
+        cout << "(1- Sumar) (2- Restar) (3- Multiplicar) (4- Dividir)" << endl << endl;
+        cout << "- Conversion de temperatura -" << endl;;
+        cout << "(5- Celsius a Fahrenheit) (6- Fahrenheit a Celsius)" << endl << endl;
+        cout << "(7- Salir)\n>> " ;
         cin >> option;
 
         if (option >= 1 && option <= 4) {
